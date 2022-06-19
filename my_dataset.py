@@ -1,7 +1,7 @@
 """my_dataset dataset."""
 
 import tensorflow_datasets as tfds
-from pathlib import Path 
+
 
 # TODO(my_dataset): Markdown description  that will appear on the catalog page.
 _DESCRIPTION = """
@@ -61,9 +61,8 @@ class MyDataset(tfds.core.GeneratorBasedBuilder):
     """Yields examples."""
     # TODO(my_dataset): Yields (key, example) tuples from the dataset
     for f in path.glob('*.png'):
-      key = f'{label}{Path(f).stem}'
-      print(f'***{key}***')
-      print(f'***{f}***')
+      key = f.name
+
       record = {
           'image': f,
           'label': label,
